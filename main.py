@@ -10,6 +10,7 @@ app.geometry("1000x700")
 app.title("Student Calculator")
 app.wm_iconbitmap(r"icons/icomain.ico")
 
+
 def button_event():
     print("button pressed")
     window = customtkinter.CTk()
