@@ -11,7 +11,7 @@ app.title("Student Calculator")
 app.wm_iconbitmap(r"icons/icomain.ico")
 
 def button_event():
-    print("button pressed")
+    print("maxim durachok")
     window = customtkinter.CTk()
     window.title("test")
     window.geometry("500x500")
