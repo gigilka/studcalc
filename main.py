@@ -8,19 +8,31 @@ customtkinter.set_default_color_theme("dark-blue")
 app = customtkinter.CTk()
 app.geometry("1000x700")
 app.title("Student Calculator")
-app.wm_iconbitmap(r"icons/icomain.ico")
+app.wm_iconbitmap(r"c:/users/kuchi/studcalc/icons/icomain.ico")
+#app.wm_iconbitmap(r"icons/icomain.ico")
 
 
-def button_event():
+def bsections_event():
     print("button pressed")
     window = customtkinter.CTk()
-    window.title("test")
+    window.title("Разделы")
     window.geometry("500x500")
-    window.wm_iconbitmap(r"icons/icomain.ico")
+    window.wm_iconbitmap(r"c:/users/kuchi/studcalc/icons/icomain.ico")
+
+    window.mainloop()
+    
+def bsettings_event():
+    print("button pressed")
+    window = customtkinter.CTk()
+    window.title("Настройки")
+    window.geometry("500x500")
+    window.wm_iconbitmap(r"c:/users/kuchi/studcalc/icons/icomain.ico")
 
     window.mainloop()
 
 
-button = customtkinter.CTkButton(app, text="CTkButton", command=button_event)
-button.pack()
+bsections = customtkinter.CTkButton(app, text="Разделы", command=bsections_event)
+bsettings = customtkinter.CTkButton(app, text="Настройки", command=bsettings_event)
+bsections.pack()
+bsettings.pack()
 app.mainloop()
