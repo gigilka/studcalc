@@ -11,7 +11,7 @@ customtkinter.set_default_color_theme("dark-blue")
 app = customtkinter.CTk()
 app.geometry("1000x700")
 app.title("Student Calculator")
-app.wm_iconbitmap(r"D:/pet prod/studcalc/icons")
+app.wm_iconbitmap(r"D:/pet prod/studcalc/icons/icomain.ico")
 # app.wm_iconbitmap(r"icons/icomain.ico")
 
 
