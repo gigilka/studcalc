@@ -11,12 +11,11 @@ customtkinter.set_default_color_theme("dark-blue")
 app = customtkinter.CTk()
 app.geometry("1000x700")
 app.title("Student Calculator")
-app.wm_iconbitmap(r"D:/pet prod/studcalc/icons")
+app.wm_iconbitmap(r"D:/pet prod/studcalc/icons/icomain.ico")
 # app.wm_iconbitmap(r"icons/icomain.ico")
 
 
 def bmatan_event():
-
     window = app
     bmatan.pack_forget()
     back1.pack_forget()
@@ -29,7 +28,6 @@ def bmatan_event():
 
 
 def integrate(v):
-
     print("clickinter")
     str = mat.integrate(v)
     print(str)
@@ -79,12 +77,14 @@ def bsettings_event():
     window.mainloop()
 
 def back_s():
+    app.title("Student Calculator")
     bsections.pack()
     bsettings.pack()
     back.pack_forget()
 
 
 def back_m():
+    app.title("Student Calculator")
     bsections.pack()
     bsettings.pack()
     back1.pack_forget()
@@ -92,6 +92,7 @@ def back_m():
 
 
 def back_z():
+    app.title("Разделы")
     back2.pack_forget()
     back1.pack()
     bmatan.pack()
@@ -99,6 +100,7 @@ def back_z():
 
 
 def back_k():
+    app.title("Матан")
     back3.pack_forget()
     back2.pack()
     bintegral.pack()
