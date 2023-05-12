@@ -11,8 +11,8 @@ customtkinter.set_default_color_theme("dark-blue")
 app = customtkinter.CTk()
 app.geometry("1000x700")
 app.title("Student Calculator")
-app.wm_iconbitmap(r"D:/pet prod/studcalc/icons")
-# app.wm_iconbitmap(r"icons/icomain.ico")
+#app.wm_iconbitmap(r"c:/users/kuchi/studcalc/icons")
+app.wm_iconbitmap(r"icons/icomain.ico")
 
 
 def bmatan_event():
@@ -24,7 +24,7 @@ def bmatan_event():
     window.title("Матан")
     window.geometry("1000x700")
     bintegral.pack()
-    window.wm_iconbitmap(r"D:/pet prod/studcalc/icons/icomain.ico")
+    window.wm_iconbitmap(r"icons/icomain.ico")
     window.mainloop()
 
 
@@ -51,7 +51,7 @@ def bintegral_event():
     window.geometry("1000x700")
     intergrateEntry.pack(pady=30)
     bintegrate.pack(pady=5)
-    window.wm_iconbitmap(r"D:/pet prod/studcalc/icons/icomain.ico")
+    window.wm_iconbitmap(r"icons/icomain.ico")
     window.mainloop()
 
 
@@ -63,7 +63,7 @@ def bsections_event():
     bsettings.pack_forget()
     back1.pack()
     bmatan.pack()
-    window.wm_iconbitmap(r"D:/pet prod/studcalc/icons/icomain.ico")
+    window.wm_iconbitmap(r"icons/icomain.ico")
     window.mainloop()
 
 
@@ -75,7 +75,7 @@ def bsettings_event():
     back.pack()
     window.title("Настройки")
     window.geometry("1000x700")
-    window.wm_iconbitmap(r"D:/pet prod/studcalc/icons/icomain.ico")
+    window.wm_iconbitmap(r"icons/icomain.ico")
     window.mainloop()
 
 def back_s():
