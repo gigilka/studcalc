@@ -1,7 +1,13 @@
-from tkinter import StringVar
+from tkinter import *
 import customtkinter
-import matan as mat
+import matplotlib
 import matplotlib.pyplot as plt
+import matan as mat
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
+canvas = None  # canvas for integral
+theme_switch = None  # switch for theme in settings
+themeFlag = 0  # flag for icoset
 
 # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_appearance_mode("light")
@@ -11,7 +17,7 @@ customtkinter.set_default_color_theme("dark-blue")
 app = customtkinter.CTk()
 app.geometry("1000x700")
 app.title("Student Calculator")
-#app.wm_iconbitmap(r"c:/users/kuchi/studcalc/icons")
+# app.wm_iconbitmap(r"c:/users/kuchi/studcalc/icons")
 app.wm_iconbitmap(r"icons/icomain.ico")
 
 
@@ -28,15 +34,23 @@ def bmatan_event():
 
 
 def integrate(v):
+    global canvas
     print("clickinter")
-    str = mat.integrate(v)
-    print(str)
-    ax = plt.axes([0, 0, 0.3, 0.3])  #left,bottom,width,height
+    result = mat.integrate(v)
+
+    result_length = len(result)  # result length for canvas
+    figsize_width = max(4, result_length * 0.1)  # 0.1  - coeff
+    fig, ax = plt.subplots(figsize=(figsize_width, 2))
     ax.set_xticks([])
     ax.set_yticks([])
     ax.axis('off')
-    plt.text(0.4, 0.4, '$%s$' % str, size=25, color="black")
-    plt.show()
+    ax.text(0.1, 0.4, '$%s$' % result, size=25, color="black")  # text position
+
+    if canvas:
+        canvas.get_tk_widget().pack_forget()
+    canvas = FigureCanvasTkAgg(fig, master=app)
+    canvas.draw()
+    canvas.get_tk_widget().pack(pady=30)
 
 
 def bintegral_event():
@@ -45,9 +59,9 @@ def bintegral_event():
     back2.pack_forget()
     back3.pack()
     bintegral.pack_forget()
-    window.title("Неопределнный интеграл")
+    window.title("Неопределенный интеграл")
     window.geometry("1000x700")
-    intergrateEntry.pack(pady=30)
+    intergrateEntry.pack(pady=10)
     bintegrate.pack(pady=5)
     window.wm_iconbitmap(r"icons/icomain.ico")
     window.mainloop()
@@ -61,8 +75,23 @@ def bsections_event():
     bsettings.pack_forget()
     back1.pack()
     bmatan.pack()
-    window.wm_iconbitmap(r"icons/icomain.ico")
+    if themeFlag:
+        window.wm_iconbitmap(r"icons/icomain.ico")
+    else:
+        window.wm_iconbitmap(r"icons/icomaininvert.ico")
     window.mainloop()
+
+theme_var = BooleanVar() # bool for switch
+
+def switch_event():
+    global themeFlag
+    customtkinter.set_appearance_mode("dark" if theme_var.get() else "light")
+    if (theme_var.get()):
+        themeFlag = 0
+        app.wm_iconbitmap(r"icons/icomain.ico")
+    else:
+        themeFlag = 1
+        app.wm_iconbitmap(r"icons/icomaininvert.ico")
 
 
 def bsettings_event():
@@ -73,10 +102,25 @@ def bsettings_event():
     back.pack()
     window.title("Настройки")
     window.geometry("1000x700")
+    global theme_switch
+    if not theme_switch:
+        # Add a switch for changing the theme
+        theme_switch = customtkinter.CTkSwitch(
+            app,
+            text="Dark mode",
+            variable=theme_var,
+            onvalue=True,
+            offvalue=False,
+            command=switch_event
+        )
+
+    theme_switch.pack()
     window.wm_iconbitmap(r"icons/icomain.ico")
     window.mainloop()
 
+
 def back_s():
+
     app.title("Student Calculator")
     bsections.pack()
     bsettings.pack()
