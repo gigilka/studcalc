@@ -77,6 +77,7 @@ def diff(v):
 def bintegral_event():
     v = StringVar()
     window = app
+    bderivative.pack_forget()
     backfMatan.pack_forget()
     backfIntegral.pack()
     bintegral.pack_forget()
@@ -94,6 +95,7 @@ def bderivative_event():
     backfMatan.pack_forget()
     backfDerivative.pack()
     bderivative.pack_forget()
+    bintegral.pack_forget()
     window.title("Производная")
     window.geometry("1000x700")
     derivativeEntry.pack(pady=10)
@@ -179,24 +181,33 @@ def back_mat():
     backfSections.pack()
     bmatan.pack()
     bintegral.pack_forget()
+    bderivative.pack_forget()
 
 
 def back_int():
+    global canvas
     app.title("Матан")
     backfIntegral.pack_forget()
     backfMatan.pack()
     bintegral.pack()
+    bderivative.pack()
     bintegrate.pack_forget()
     intergrateEntry.pack_forget()
+    if canvas:
+        canvas.get_tk_widget().pack_forget()
 
 
 def back_der():
+    global canvas1
     app.title("Матан")
     backfDerivative.pack_forget()
     backfMatan.pack()
+    bintegral.pack()
     bderivative.pack()
     bdiff.pack_forget()
     derivativeEntry.pack_forget()
+    if canvas1:
+        canvas1.get_tk_widget().pack_forget()
 
 
 bmatan = customtkinter.CTkButton(app, text="Матан", command=bmatan_event)
